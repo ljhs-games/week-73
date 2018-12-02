@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://nodes/escape-listener/EscapeListener.tscn" type="PackedScene" id=2]
@@ -8,10 +8,20 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 10.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [node name="Game" type="Node2D" index="0"]
 
@@ -67,8 +77,52 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Bomb" index="1"]
 
+modulate = Color( 0.839844, 0.134506, 0.134506, 1 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Oxygen Powerup" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oxygen Powerup" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Oxygen Powerup" index="1"]
+
+modulate = Color( 0.824219, 0.347717, 0.347717, 1 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Laser Powerup" type="Area2D" parent="." index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser Powerup" index="0"]
+
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Laser Powerup" index="1"]
+
+_sections_unfolded = [ "Visibility" ]
+
 [connection signal="body_entered" from="Speed Boost AG" to="." method="_on_Speed_Boost_body_entered"]
 
 [connection signal="body_entered" from="Bomb" to="." method="_on_Bomb_body_entered"]
+
+[connection signal="body_entered" from="Oxygen Powerup" to="." method="_on_Oxygen_Powerup_body_entered"]
+
+[connection signal="body_entered" from="Laser Powerup" to="." method="_on_Laser_Powerup_body_entered"]
 
 
