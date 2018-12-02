@@ -2,4 +2,6 @@ extends Node2D
 
 func _on_Speed_Boost_body_entered(body):
 	hide()
-	player_speed_boost()
+
+func _on_Bomb_body_entered(body):
+	hide()
