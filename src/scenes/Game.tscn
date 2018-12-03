@@ -61,7 +61,26 @@ shape = SubResource( 1 )
 modulate = Color( 1, 0, 0, 1 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Bomb" type="Area2D" parent="." index="2"]
+[node name="Speed Boost UG" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Speed Boost UG" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Speed Boost UG" index="1"]
+
+modulate = Color( 1, 0, 0, 1 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Bomb" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -80,7 +99,7 @@ shape = SubResource( 2 )
 modulate = Color( 0.839844, 0.134506, 0.134506, 1 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Oxygen Powerup" type="Area2D" parent="." index="3"]
+[node name="Oxygen Powerup" type="Area2D" parent="." index="4"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -99,7 +118,7 @@ shape = SubResource( 3 )
 modulate = Color( 0.824219, 0.347717, 0.347717, 1 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Laser Powerup" type="Area2D" parent="." index="4"]
+[node name="Laser Powerup" type="Area2D" parent="." index="5"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -118,6 +137,8 @@ shape = SubResource( 4 )
 _sections_unfolded = [ "Visibility" ]
 
 [connection signal="body_entered" from="Speed Boost AG" to="." method="_on_Speed_Boost_body_entered"]
+
+[connection signal="body_entered" from="Speed Boost UG" to="." method="_on_Speed_Boost_UG_body_entered"]
 
 [connection signal="body_entered" from="Bomb" to="." method="_on_Bomb_body_entered"]
 
