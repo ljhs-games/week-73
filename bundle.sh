@@ -25,6 +25,7 @@ fi
 
 echo "Deleting $EXPORT_FOLDER/* ..."
 rm -r $EXPORT_FOLDER/*
+touch "$EXPORT_FOLDER/exports-go-here"
 cd "$EXPORT_FOLDER"
 echo "Copying $EXPORT_FOLDER path to clipboard ..."
 pwd | xclip -selection c
